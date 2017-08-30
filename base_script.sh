@@ -10,7 +10,7 @@ HomeDirFileMenu=/home/dsiddiqui/AppsUtilityMenu/FilesMenu
 
 printf "\n\tMain Menu\n\n"
 
-echo  -e "\033[33;5mVISA\033[0m"
+echo  -e "\t\033[33;5mVISA\033[0m\n"
 
 #printf '%s%s%s%s' "$(tput setaf 3)" "$(tput blink)" "VISA" "$(tput sgr0)"
 printf "\t\t1) VISA currency change\n\t\t2) reverse visa clearing\n\t\t3) retotal visa file\n\t\t4) extract_arn_from_baseII\n\n\t   80BYTE:\n\n\t\t5) 80 Byte Dump Utility\n\t\t6) replace oci 80byte\n\t\t7) extract non ascii chars\n\t\t8) extract invalid card type\n\t\t9) extract batch summary with trailing record\n\t\t10) extract 80byte tran\n\t\t11) check for DCC\n\t\t12) change date 80 bytes\n\t\t13) find multi currency batches\n\n\t   STATEMENTS:\n\n\t\t14) extract merchant statement\n\n\t   DINERS:\n\n\t\t15) diners fallover\n\n\t   FILE MENU:\n\n\t\t16) archive file\n\t\t17) extract non ascii chars file menu\n"
