@@ -82,6 +82,17 @@ case "$optn" in
 esac
 }
 
+func_diners_scripts()
+{
+case "$optn" in
+
+	15) /usr/bin/clear
+		echo -e "\nYou have chosen the DINERS option....calling the diners fallover script\n"
+		$HomeDir/diners_fallover.sh
+		;;
+esac
+}
+
 func_visa_menu()
 {
 printf "\t\t1) VISA currency change\n\t\t2) reverse visa clearing\n\t\t3) retotal visa file\n\t\t4) extract_arn_from_baseII\n\n"
@@ -110,6 +121,15 @@ read optn
 func_statements_scripts
 }
 
+func_diners_menu()
+{
+printf "\t\t15) diners fallover\n\n"
+echo  -n "Enter your choice: "
+read optn
+
+func_diners_scripts
+}
+
 func_main_menu()
 {
 
@@ -122,7 +142,6 @@ echo  -e "\t   \033[33;5m2) 80BYTE\033[0m\n"
 echo  -e "\t   \033[33;5m3) STATEMENTS\033[0m\n"
 
 echo  -e "\t   \033[33;5m4) DINERS\033[0m\n"
-#printf "\t\t15) diners fallover\n\n"
 
 echo  -e "\t   \033[33;5m5) FILE MENU\033[0m\n"
 #printf "\t\t16) archive file\n\t\t17) extract non ascii chars file menu\n\n"
@@ -142,6 +161,11 @@ else
 		if [[ "$optn" -eq 3 ]]
 		then
 			func_statements_menu
+		else
+			if [[ "$optn" -eq 4 ]]
+			then
+				func_diners_menu
+			fi
 		fi
 	fi
 fi
@@ -151,10 +175,7 @@ fi
 
 
 
-#	15) /usr/bin/clear
-#		echo -e "\nYou have chosen the DINERS option....calling the diners fallover script\n"
-#		$HomeDir/diners_fallover.sh
-#		;;	
+	
 #	16) /usr/bin/clear
 #		echo -e "\nYou have chosen the FILE MENU option....calling the archive file script\n"
 #		$HomeDir/archive_file.sh
