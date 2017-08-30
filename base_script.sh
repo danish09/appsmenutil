@@ -71,6 +71,17 @@ case "$optn" in
 esac
 }
 
+func_statements_scripts()
+{
+case "$optn" in
+
+	14) /usr/bin/clear
+		echo -e "\nYou have chosen the STATEMENTS option....calling the extract merchant statement script\n"
+		$HomeDir/extract_merchant_statement.sh
+		;;
+esac
+}
+
 func_visa_menu()
 {
 printf "\t\t1) VISA currency change\n\t\t2) reverse visa clearing\n\t\t3) retotal visa file\n\t\t4) extract_arn_from_baseII\n\n"
@@ -90,6 +101,15 @@ read optn
 func_80byte_scripts
 }
 
+func_statements_menu()
+{
+printf "\t\t14) extract merchant statement\n\n"
+echo  -n "Enter your choice: "
+read optn
+
+func_statements_scripts
+}
+
 func_main_menu()
 {
 
@@ -100,7 +120,6 @@ echo  -e "\t   \033[33;5m1) VISA\033[0m\n"
 echo  -e "\t   \033[33;5m2) 80BYTE\033[0m\n"
 
 echo  -e "\t   \033[33;5m3) STATEMENTS\033[0m\n"
-#printf "\t\t14) extract merchant statement\n\n"
 
 echo  -e "\t   \033[33;5m4) DINERS\033[0m\n"
 #printf "\t\t15) diners fallover\n\n"
@@ -117,8 +136,13 @@ then
 	func_visa_menu
 else 
 	if [[ "$optn" -eq 2 ]]
-	 then
+	then
 		func_80byte_menu
+	else
+		if [[ "$optn" -eq 3 ]]
+		then
+			func_statements_menu
+		fi
 	fi
 fi
 }
@@ -126,10 +150,7 @@ fi
 
 
 
-#	14) /usr/bin/clear
-#		echo -e "\nYou have chosen the STATEMENTS option....calling the extract merchant statement script\n"
-#		$HomeDir/extract_merchant_statement.sh
-#		;;
+
 #	15) /usr/bin/clear
 #		echo -e "\nYou have chosen the DINERS option....calling the diners fallover script\n"
 #		$HomeDir/diners_fallover.sh
@@ -153,9 +174,11 @@ do
 	read -p "Do you want to return to the main menu:(y/Y), any other key for exiting the script: " anser
 	if [[ "$anser" = "y"||$anser = "Y" ]]
 	then
+		/usr/bin/clear
 		func_main_menu
 	else
-		echo "script execution ends here"
+		/usr/bin/clear
+		printf "script execution ends here\n\n"
 		exit
 	fi
 done
