@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# DSID 30/08/17 created menu based utility
+
 set -x
 
 HomeDir=/home/dsiddiqui/AppsUtilityMenu/scripts
@@ -93,6 +95,21 @@ case "$optn" in
 esac
 }
 
+func_file_scripts()
+{
+case "$optn" in
+
+	16) /usr/bin/clear
+		echo -e "\nYou have chosen the FILE MENU option....calling the archive file script\n"
+		$HomeDir/archive_file.sh
+		;;	
+	17) /usr/bin/clear
+		echo -e "\nYou have chosen the FILE MENU option....calling the extract non ascii_chars script\n"
+		$HomeDir/extract_non-ascii_chars.sh
+		;;
+esac
+}
+
 func_visa_menu()
 {
 printf "\t\t1) VISA currency change\n\t\t2) reverse visa clearing\n\t\t3) retotal visa file\n\t\t4) extract_arn_from_baseII\n\n"
@@ -130,6 +147,15 @@ read optn
 func_diners_scripts
 }
 
+func_file_menu()
+{
+printf "\t\t16) archive file\n\t\t17) extract non ascii chars file menu\n\n"
+echo  -n "Enter your choice: "
+read optn
+
+func_file_scripts
+}
+
 func_main_menu()
 {
 
@@ -144,9 +170,8 @@ echo  -e "\t   \033[33;5m3) STATEMENTS\033[0m\n"
 echo  -e "\t   \033[33;5m4) DINERS\033[0m\n"
 
 echo  -e "\t   \033[33;5m5) FILE MENU\033[0m\n"
-#printf "\t\t16) archive file\n\t\t17) extract non ascii chars file menu\n\n"
 
-#local optn
+
 echo  -n "Enter your choice: "
 read optn
 
@@ -165,6 +190,11 @@ else
 			if [[ "$optn" -eq 4 ]]
 			then
 				func_diners_menu
+			else
+				if [[ "$optn" -eq 5 ]]
+				then
+					func_file_menu
+				fi
 			fi
 		fi
 	fi
@@ -172,23 +202,7 @@ fi
 }
 
 
-
-
-
-	
-#	16) /usr/bin/clear
-#		echo -e "\nYou have chosen the FILE MENU option....calling the archive file script\n"
-#		$HomeDir/archive_file.sh
-#		;;	
-#	17) /usr/bin/clear
-#		echo -e "\nYou have chosen the FILE MENU option....calling the extract non ascii_chars script\n"
-#		$HomeDir/extract_non-ascii_chars.sh
-#		;;
-#esac
-#}
-
 func_main_menu
-#func_options
 
 while :
 do
