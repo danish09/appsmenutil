@@ -25,11 +25,14 @@ printf "\t\t15) diners fallover\n\n"
 echo  -e "\t   \033[33;5mFILE MENU\033[0m\n"
 printf "\t\t16) archive file\n\t\t17) extract non ascii chars file menu\n\n"
 
+echo  -n "Enter your choice: "
+
 read optn
 
 case "$optn" in
 
 	1)
+		echo "\nYou have chosen a VISA option...."
 		$HomeDirVISA/amend_000_s36_to_036_currency.sh
 		;;
 	2)	$HomeDirVISA/reverse_visa_clearing_v5.sh
