@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 HomeDir=/home/dsiddiqui/AppsUtilityMenu/scripts
 HomeDir80bytemcc=/home/dsiddiqui/AppsUtilityMenu/scripts/multiCurrency
 
@@ -24,42 +26,94 @@ echo  -n "Enter your choice: "
 
 read optn
 
+func_options()
+{
 case "$optn" in
 
-	1)
-		echo -e "\nYou have chosen a VISA option....calling the amend VISA script\n"
+	1)	/usr/bin/clear
+		echo -e "\nYou have chosen the VISA option....calling the amend VISA script\n"
 		$HomeDir/amend_000_s36_to_036_currency.sh
 		;;
-	2)	$HomeDir/reverse_visa_clearing_v5.sh
+	2)	/usr/bin/clear
+		echo -e "\nYou have chosen the VISA option....calling the amend VISA script\n"
+		$HomeDir/reverse_visa_clearing_v5.sh
 		;;
-	3)	$HomeDir/retotal_visa_file.awk
+	3)	/usr/bin/clear
+		echo -e "\nYou have chosen the VISA option....calling the amend VISA script\n"
+		$HomeDir/retotal_visa_file.awk
 		;;
-	4)	$HomeDir/extract_arn_from_baseII.awk	
+	4)	/usr/bin/clear
+		echo -e "\nYou have chosen the VISA option....calling the amend VISA script\n"
+		$HomeDir/extract_arn_from_baseII.awk	
 		;;
-	5)  $HomeDir/omnipay_dump_utility.sh
+	5)  /usr/bin/clear
+		echo -e "\nYou have chosen the 80BYTE option....calling the omnipay dump utility script\n"
+		$HomeDir/omnipay_dump_utility.sh
 		;;
-	6)  $HomeDir/replace_OCI_80byte.sh
+	6)  /usr/bin/clear
+		echo -e "\nYou have chosen the 80BYTE option....calling the replace OCI 80byte script\n"
+		$HomeDir/replace_OCI_80byte.sh
 		;;
-	7)  $HomeDir/extract_non-ascii_chars.sh
+	7)  /usr/bin/clear
+		echo -e "\nYou have chosen the 80BYTE option....calling the extract non ascii chars script\n"
+		$HomeDir/extract_non-ascii_chars.sh
 		;;
-	8)  $HomeDir/extract_invalid_card_type.sh
+	8)  /usr/bin/clear
+		echo -e "\nYou have chosen the 80BYTE option....calling the extract invalid card type script\n"
+		$HomeDir/extract_invalid_card_type.sh
 		;;
-	9)	$HomeDir/extract_batch_summary_with_trailing_record.sh
+	9)	/usr/bin/clear
+		echo -e "\nYou have chosen the 80BYTE option....calling the extract batch summary with trailing record script\n"
+		$HomeDir/extract_batch_summary_with_trailing_record.sh
 		;;
-	10) $HomeDir/extract_80bte_tran.sh
+	10) /usr/bin/clear
+		echo -e "\nYou have chosen the 80BYTE option....calling the extract 80byte tran script\n"
+		$HomeDir/extract_80bte_tran.sh
 		;;
-	11) $HomeDir/check_for_DCC.sh
+	11) /usr/bin/clear
+		echo -e "\nYou have chosen the 80BYTE option....calling the check for DCC script\n"
+		$HomeDir/check_for_DCC.sh
 		;;
-	12) $HomeDir/Change_date_80_bytes.pl
+	12) /usr/bin/clear
+		echo -e "\nYou have chosen the 80BYTE option....calling the Change date 80 bytes script\n"
+		$HomeDir/Change_date_80_bytes.pl
 		;;
-	13) $HomeDir80bytemcc/find_multi_currency_batches.sh
+	13) /usr/bin/clear
+		echo -e "\nYou have chosen the 80BYTE mcc option....calling the find multi currency batches script\n"
+		$HomeDir80bytemcc/find_multi_currency_batches.sh
 		;;
-	14) $HomeDir/extract_merchant_statement.sh
+	14) /usr/bin/clear
+		echo -e "\nYou have chosen the STATEMENTS option....calling the extract merchant statement script\n"
+		$HomeDir/extract_merchant_statement.sh
 		;;
-	15) $HomeDir/diners_fallover.sh
+	15) /usr/bin/clear
+		echo -e "\nYou have chosen the DINERS option....calling the diners fallover script\n"
+		$HomeDir/diners_fallover.sh
 		;;	
-	16) $HomeDir/archive_file.sh
+	16) /usr/bin/clear
+		echo -e "\nYou have chosen the FILE MENU option....calling the archive file script\n"
+		$HomeDir/archive_file.sh
 		;;	
-	17) $HomeDir/extract_non-ascii_chars.sh
+	17) /usr/bin/clear
+		echo -e "\nYou have chosen the FILE MENU option....calling the extract non ascii_chars script\n"
+		$HomeDir/extract_non-ascii_chars.sh
 		;;
 esac
+}
+
+func_options
+
+while :
+do
+	read -p "Do you want to continue:(y/Y), any other key for exiting the script: " anser
+	if [[ "$anser" = "y"||$anser = "Y" ]]
+	then
+		func_options
+	else
+		echo "script execution ends here"
+		exit
+	fi
+done
+	
+
+
