@@ -1,12 +1,7 @@
 #!/bin/bash
 
-HomeDirVISA=/home/dsiddiqui/AppsUtilityMenu/VISA
-HomeDir80byte=/home/dsiddiqui/AppsUtilityMenu/80byte
-HomeDir80bytescripts=/home/dsiddiqui/AppsUtilityMenu/80byte/scripts
-HomeDir80bytemcc=/home/dsiddiqui/AppsUtilityMenu/80byte/scripts/multiCurrency
-HomeDirstatements=/home/dsiddiqui/AppsUtilityMenu/statements
-HomeDirdiners=/home/dsiddiqui/AppsUtilityMenu/Diners
-HomeDirFileMenu=/home/dsiddiqui/AppsUtilityMenu/FilesMenu
+HomeDir=/home/dsiddiqui/AppsUtilityMenu/scripts
+HomeDir80bytemcc=/home/dsiddiqui/AppsUtilityMenu/scripts/multiCurrency
 
 printf "\n\tMain Menu\n\n"
 
@@ -32,39 +27,39 @@ read optn
 case "$optn" in
 
 	1)
-		echo "\nYou have chosen a VISA option...."
-		$HomeDirVISA/amend_000_s36_to_036_currency.sh
+		echo -e "\nYou have chosen a VISA option....calling the amend VISA script\n"
+		$HomeDir/amend_000_s36_to_036_currency.sh
 		;;
-	2)	$HomeDirVISA/reverse_visa_clearing_v5.sh
+	2)	$HomeDir/reverse_visa_clearing_v5.sh
 		;;
-	3)	$HomeDirVISA/retotal_visa_file.awk
+	3)	$HomeDir/retotal_visa_file.awk
 		;;
-	4)	$HomeDirVISA/extract_arn_from_baseII.awk	
+	4)	$HomeDir/extract_arn_from_baseII.awk	
 		;;
-	5)  $HomeDir80byte/omnipay_dump_utility.sh
+	5)  $HomeDir/omnipay_dump_utility.sh
 		;;
-	6)  $HomeDir80bytescripts/replace_OCI_80byte.sh
+	6)  $HomeDir/replace_OCI_80byte.sh
 		;;
-	7)  $HomeDir80bytescripts/extract_non-ascii_chars.sh
+	7)  $HomeDir/extract_non-ascii_chars.sh
 		;;
-	8)  $HomeDir80bytescripts/extract_invalid_card_type.sh
+	8)  $HomeDir/extract_invalid_card_type.sh
 		;;
-	9)	$HomeDir80bytescripts/extract_batch_summary_with_trailing_record.sh
+	9)	$HomeDir/extract_batch_summary_with_trailing_record.sh
 		;;
-	10) $HomeDir80bytescripts/extract_80bte_tran.sh
+	10) $HomeDir/extract_80bte_tran.sh
 		;;
-	11) $HomeDir80bytescripts/check_for_DCC.sh
+	11) $HomeDir/check_for_DCC.sh
 		;;
-	12) $HomeDir80bytescripts/Change_date_80_bytes.pl
+	12) $HomeDir/Change_date_80_bytes.pl
 		;;
 	13) $HomeDir80bytemcc/find_multi_currency_batches.sh
 		;;
-	14) $HomeDirstatements/extract_merchant_statement.sh
+	14) $HomeDir/extract_merchant_statement.sh
 		;;
-	15) $HomeDirdiners/diners_fallover.sh
+	15) $HomeDir/diners_fallover.sh
 		;;	
-	16) $HomeDirFileMenu/archive_file.sh
+	16) $HomeDir/archive_file.sh
 		;;	
-	17) $HomeDirFileMenu/extract_non-ascii_chars.sh
+	17) $HomeDir/extract_non-ascii_chars.sh
 		;;
 esac
