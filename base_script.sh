@@ -86,6 +86,8 @@ func_80byte_menu()
 printf "\t\t5) 80 Byte Dump Utility\n\t\t6) replace oci 80byte\n\t\t7) extract non ascii chars\n\t\t8) extract invalid card type\n\t\t9) extract batch summary with trailing record\n\t\t10) extract 80byte tran\n\t\t11) check for DCC\n\t\t12) change date 80 bytes\n\t\t13) find multi currency batches\n\n"
 echo  -n "Enter your choice: "
 read optn
+
+func_80byte_scripts
 }
 
 func_main_menu()
@@ -113,8 +115,11 @@ read optn
 if [[ "$optn" -eq 1 ]]
 then
 	func_visa_menu
-else [[ "$optn" -eq 2 ]]
-	 func_80byte_menu
+else 
+	if [[ "$optn" -eq 2 ]]
+	 then
+		func_80byte_menu
+	fi
 fi
 }
 
