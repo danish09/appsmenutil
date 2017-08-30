@@ -5,7 +5,7 @@ set -x
 HomeDir=/home/dsiddiqui/AppsUtilityMenu/scripts
 HomeDir80bytemcc=/home/dsiddiqui/AppsUtilityMenu/scripts/multiCurrency
 
-func_visa_options()
+func_visa_scripts()
 {
 case "$optn" in
 
@@ -28,7 +28,7 @@ case "$optn" in
 esac
 }
 
-func_80byte_options()
+func_80byte_scripts()
 {
 case "$optn" in
 
@@ -76,6 +76,9 @@ func_visa_menu()
 printf "\t\t1) VISA currency change\n\t\t2) reverse visa clearing\n\t\t3) retotal visa file\n\t\t4) extract_arn_from_baseII\n\n"
 echo  -n "Enter your choice: "
 read optn
+
+func_visa_scripts
+
 }
 
 func_80byte_menu()
@@ -110,10 +113,8 @@ read optn
 if [[ "$optn" -eq 1 ]]
 then
 	func_visa_menu
-fi
-if [[ "$optn" -eq 2 ]]
-then
-	func_80byte_menu
+else [[ "$optn" -eq 2 ]]
+	 func_80byte_menu
 fi
 }
 
@@ -139,15 +140,15 @@ fi
 #esac
 #}
 
-#func_main_menu
+func_main_menu
 #func_options
 
 while :
 do
-	read -p "Do you want to continue:(y/Y), any other key for exiting the script: " anser
+	read -p "Do you want to return to the main menu:(y/Y), any other key for exiting the script: " anser
 	if [[ "$anser" = "y"||$anser = "Y" ]]
 	then
-		func_options
+		func_main_menu
 	else
 		echo "script execution ends here"
 		exit
