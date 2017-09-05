@@ -4,68 +4,80 @@
 
 HomeDir=/home/dsiddiqui/AppsUtilityMenu/scripts
 HomeDir80bytemcc=/home/dsiddiqui/AppsUtilityMenu/scripts/multiCurrency
+HomeDirMC=/home/dsiddiqui/AppsUtilityMenu/Manage_IPM
 
 func_visa_scripts()
 {
-case "$optn" in
+case "$visa_optn" in
 
-	1)	/usr/bin/clear
-		echo -e "\nYou have chosen the VISA option....calling the amend VISA script\n"
+	a)	/usr/bin/clear
+		echo -e "\n....calling the amend VISA script\n"
 		$HomeDir/amend_000_s36_to_036_currency.sh
 		;;
-	2)	/usr/bin/clear
-		echo -e "\nYou have chosen the VISA option....calling the amend VISA script\n"
+	b)	/usr/bin/clear
+		echo -e "\n....calling the reverse visa clearing script\n"
 		$HomeDir/reverse_visa_clearing_v5.sh
 		;;
-	3)	/usr/bin/clear
-		echo -e "\nYou have chosen the VISA option....calling the amend VISA script\n"
+	c)	/usr/bin/clear
+		echo -e "\n....calling the retotal visa file script\n"
 		$HomeDir/retotal_visa_file.awk
 		;;
-	4)	/usr/bin/clear
-		echo -e "\nYou have chosen the VISA option....calling the amend VISA script\n"
+	d)	/usr/bin/clear
+		echo -e "\n....calling the extract arn from baseII script\n"
 		$HomeDir/extract_arn_from_baseII.awk	
+		;;
+esac
+}
+
+func_mc_scripts()
+{
+case "$mc_optn" in
+
+	a)	/usr/bin/clear
+		echo -e "\n....calling the manage ipm script\n"
+		$HomeDirMC/manage_ipm.sh
 		;;
 esac
 }
 
 func_80byte_scripts()
 {
-case "$optn" in
+case "$optn_80byte" in
 
-	5)  /usr/bin/clear
-		echo -e "\nYou have chosen the 80BYTE option....calling the omnipay dump utility script\n"     #script has error
+	a)  /usr/bin/clear
+		echo -e "\n....calling the omnipay dump utility script\n"     #script has error
 		$HomeDir/omnipay_dump_utility.sh
 		;;
-	6)  /usr/bin/clear
-		echo -e "\nYou have chosen the 80BYTE option....calling the replace OCI 80byte script\n"		#script has error
+	b)  /usr/bin/clear
+		echo -e "\n....calling the replace OCI 80byte script\n"		#script has error
 		$HomeDir/replace_OCI_80byte.sh
 		;;
-	7)  /usr/bin/clear
-		echo -e "\nYou have chosen the 80BYTE option....calling the extract non ascii chars script\n"	
+	c)  /usr/bin/clear
+		echo -e "\n....calling the extract non ascii chars script\n"	
 		$HomeDir/extract_non-ascii_chars.sh
 		;;
-	8)  /usr/bin/clear
-		echo -e "\nYou have chosen the 80BYTE option....calling the extract invalid card type script\n"	#script will not return to main menu
+	d)  /usr/bin/clear
+		echo -e "\n....calling the extract invalid card type script\n"	#script will not return to main menu
 		$HomeDir/extract_invalid_card_type.sh
 		;;
-	9)	/usr/bin/clear
-		echo -e "\nYou have chosen the 80BYTE option....calling the extract batch summary with trailing record script\n"
+	e)	/usr/bin/clear
+		echo -e "\n....calling the extract batch summary with trailing record script\n"
 		$HomeDir/extract_batch_summary_with_trailing_record.sh
 		;;
-	10) /usr/bin/clear
-		echo -e "\nYou have chosen the 80BYTE option....calling the extract 80byte tran script\n"		#script will not return to main menu
+	f) /usr/bin/clear
+		echo -e "\n....calling the extract 80byte tran script\n"		#script will not return to main menu
 		$HomeDir/extract_80bte_tran.sh
 		;;
-	11) /usr/bin/clear
-		echo -e "\nYou have chosen the 80BYTE option....calling the check for DCC script\n"
+	g) /usr/bin/clear
+		echo -e "\n....calling the check for DCC script\n"
 		$HomeDir/check_for_DCC.sh
 		;;
-	12) /usr/bin/clear
-		echo -e "\nYou have chosen the 80BYTE option....calling the Change date 80 bytes script\n"		# you have to give date and filename as argument
+	h) /usr/bin/clear
+		echo -e "\n....calling the Change date 80 bytes script\n"		# you have to give date and filename as argument
 		$HomeDir/Change_date_80_bytes.pl
 		;;
-	13) /usr/bin/clear
-		echo -e "\nYou have chosen the 80BYTE mcc option....calling the find multi currency batches script\n"
+	i) /usr/bin/clear
+		echo -e "\n....calling the find multi currency batches script\n"
 		$HomeDir80bytemcc/find_multi_currency_batches.sh
 		;;
 esac
@@ -76,7 +88,7 @@ func_statements_scripts()
 case "$optn" in
 
 	14) /usr/bin/clear
-		echo -e "\nYou have chosen the STATEMENTS option....calling the extract merchant statement script\n"
+		echo -e "\n....calling the extract merchant statement script\n"
 		$HomeDir/extract_merchant_statement.sh
 		;;
 esac
@@ -87,7 +99,7 @@ func_diners_scripts()
 case "$optn" in
 
 	15) /usr/bin/clear
-		echo -e "\nYou have chosen the DINERS option....calling the diners fallover script\n"
+		echo -e "\n....calling the diners fallover script\n"
 		$HomeDir/diners_fallover.sh
 		;;
 esac
@@ -98,11 +110,11 @@ func_file_scripts()
 case "$optn" in
 
 	16) /usr/bin/clear
-		echo -e "\nYou have chosen the FILE MENU option....calling the archive file script\n"
+		echo -e "\n....calling the archive file script\n"
 		$HomeDir/archive_file.sh
 		;;	
 	17) /usr/bin/clear
-		echo -e "\nYou have chosen the FILE MENU option....calling the extract non ascii_chars script\n"
+		echo -e "\n....calling the extract non ascii_chars script\n"
 		$HomeDir/extract_non-ascii_chars.sh
 		;;
 esac
@@ -110,26 +122,36 @@ esac
 
 func_visa_menu()
 {
-printf "\n\t\t1) VISA currency change\n\t\t2) reverse visa clearing\n\t\t3) retotal visa file\n\t\t4) extract_arn_from_baseII\n\n"
+printf "\n\t\ta) VISA currency change\n\t\tb) reverse visa clearing\n\t\tc) retotal visa file\n\t\td) extract_arn_from_baseII\n\n"
 echo  -n "Enter your choice: "
-read optn
+read visa_optn
 
 func_visa_scripts
 
 }
 
+func_mc_menu()
+{
+printf "\n\t\ta) manage ipm\n\n"
+echo  -n "Enter your choice: "
+read mc_optn
+
+func_mc_scripts
+
+}
+
 func_80byte_menu()
 {
-printf "\n\t\t5) 80 Byte Dump Utility\n\t\t6) replace oci 80byte\n\t\t7) extract non ascii chars\n\t\t8) extract invalid card type\n\t\t9) extract batch summary with trailing record\n\t\t10) extract 80byte tran\n\t\t11) check for DCC\n\t\t12) change date 80 bytes\n\t\t13) find multi currency batches\n\n"
+printf "\n\t\ta) 80 Byte Dump Utility (error in this script)\n\t\tb) replace oci 80byte\n\t\tc) extract non ascii chars\n\t\td) extract invalid card type (script doesn't return to main menu, press Ctrl+C for exiting)\n\t\te) extract batch summary with trailing record\n\t\tf) extract 80byte tran (script doesn't return to main menu, press Ctrl+C for exiting)\n\t\tg) check for DCC\n\t\th) change date 80 bytes (script exits in error)\n\t\ti) find multi currency batches\n\n"
 echo  -n "Enter your choice: "
-read optn
+read optn_80byte
 
 func_80byte_scripts
 }
 
 func_statements_menu()
 {
-printf "\n\t\t14) extract merchant statement\n\n"
+printf "\n\t\t14) extract merchant statement (script doesn't return to main menu, press Ctrl+C for exiting)\n\n"
 echo  -n "Enter your choice: "
 read optn
 
@@ -138,7 +160,7 @@ func_statements_scripts
 
 func_diners_menu()
 {
-printf "\n\t\t15) diners fallover\n\n"
+printf "\n\t\t15) diners fallover (script exits in error)\n\n"
 echo  -n "Enter your choice: "
 read optn
 
@@ -147,7 +169,7 @@ func_diners_scripts
 
 func_file_menu()
 {
-printf "\n\t\t16) archive file\n\t\t17) extract non ascii chars file menu\n\n"
+printf "\n\t\t16) archive file (script exits in error)\n\t\t17) extract non ascii chars file menu\n\n"
 echo  -n "Enter your choice: "
 read optn
 
@@ -161,13 +183,15 @@ printf "\n\tMain Menu\n\n"
 
 echo  -e "\t   \033[33;5m1) VISA\033[0m\n"
 
-echo  -e "\t   \033[33;5m2) 80BYTE\033[0m\n"
+echo  -e "\t   \033[33;5m2) MC\033[0m\n"
 
-echo  -e "\t   \033[33;5m3) STATEMENTS\033[0m\n"
+echo  -e "\t   \033[33;5m3) 80BYTE\033[0m\n"
 
-echo  -e "\t   \033[33;5m4) DINERS\033[0m\n"
+echo  -e "\t   \033[33;5m4) STATEMENTS\033[0m\n"
 
-echo  -e "\t   \033[33;5m5) FILE MENU\033[0m\n"
+echo  -e "\t   \033[33;5m5) DINERS\033[0m\n"
+
+echo  -e "\t   \033[33;5m6) FILE MENU\033[0m\n"
 
 
 printf "Enter your choice: "
@@ -179,19 +203,24 @@ then
 else 
 	if [[ "$optn" -eq 2 ]]
 	then
-		func_80byte_menu
+		func_mc_menu
 	else
 		if [[ "$optn" -eq 3 ]]
 		then
-			func_statements_menu
+			func_80byte_menu
 		else
 			if [[ "$optn" -eq 4 ]]
 			then
-				func_diners_menu
+				func_statements_menu
 			else
 				if [[ "$optn" -eq 5 ]]
 				then
-					func_file_menu
+					func_diners_menu
+				else
+					if [[ "$optn" -eq 6 ]]
+					then
+						func_file_menu
+					fi
 				fi
 			fi
 		fi
@@ -204,6 +233,7 @@ func_main_menu
 
 while :
 do
+	echo
 	read -p "Do you want to return to the main menu:(y/Y), any other key for exiting the script: " anser
 	if [[ "$anser" = "y"||$anser = "Y" ]]
 	then
