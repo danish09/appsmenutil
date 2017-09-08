@@ -2,9 +2,11 @@
 
 # DSID 30/08/17 created menu based apps utility
 
-HomeDir=/home/dsiddiqui/AppsUtilityMenu/scripts
+HomeDir=/scratch/AppsUtilityMenu/AppsUtil_latest/scripts
 HomeDir80bytemcc=/home/dsiddiqui/AppsUtilityMenu/scripts/multiCurrency
-HomeDirMC=/home/dsiddiqui/AppsUtilityMenu/Manage_IPM
+HomeDirMC=/scratch/AppsUtilityMenu/AppsUtil_latest/Manage_IPM
+
+#you need to mention the related script in one of the scheme case statements written below.
 
 func_visa_scripts()
 {
@@ -120,6 +122,8 @@ case "$optn" in
 esac
 }
 
+#enter into sub menu from Main menu. anything added here will be shown in the sub menu section, for eg; when adding new scripts write an option here for that particular scheme and mention the script above (inside the related scheme case statement) 
+
 func_visa_menu()
 {
 printf "\n\t\ta) VISA currency change\n\t\tb) reverse visa clearing\n\t\tc) retotal visa file\n\t\td) extract_arn_from_baseII\n\n"
@@ -176,6 +180,8 @@ read optn
 func_file_scripts
 }
 
+#any new scheme option needs to be defined below
+
 func_main_menu()
 {
 
@@ -193,10 +199,17 @@ echo  -e "\t   \033[33;5m5) DINERS\033[0m\n"
 
 echo  -e "\t   \033[33;5m6) FILE MENU\033[0m\n"
 
+printf "\n\tpress 0 to exit out of this script\n\n"
 
 printf "Enter your choice: "
 read optn
 
+if [[ "$optn" -eq 0 ]]
+then
+	exit
+fi
+
+#if section for scheme related scripts
 if [[ "$optn" -eq 1 ]]
 then
 	func_visa_menu
